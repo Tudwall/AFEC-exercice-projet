@@ -6,8 +6,9 @@ dotenv.config();
 const PORT = process.env.PORT;
 const app = express();
 
+app.use(express.json());
 app.use("/users", userRoutes);
 
 app.listen(PORT, (req, res) => {
-	console.info(`server running ${PORT}`);
+  console.info(`server running ${PORT}`);
 });
