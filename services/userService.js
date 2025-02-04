@@ -1,7 +1,7 @@
 import UserRepository from "../repositories/userRepository.js";
 
 class UserService {
-	constructor(userService) {
+	constructor() {
 		this.UserRepository = new UserRepository();
 	}
 
@@ -14,6 +14,22 @@ class UserService {
 				email,
 				password,
 			});
+		} catch (err) {
+			throw new Error(err.message);
+		}
+	}
+
+	async getUsers() {
+		try {
+			return await this.UserRepository.getUsers();
+		} catch (err) {
+			throw new Error(err.message);
+		}
+	}
+
+	async getUserById(id) {
+		try {
+			return await this.UserRepository.getUserById(id);
 		} catch (err) {
 			throw new Error(err.message);
 		}
