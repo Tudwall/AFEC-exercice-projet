@@ -54,6 +54,18 @@ class UserService {
 			throw new Error(err.message);
 		}
 	}
+
+  async deleteUser(id) {
+    try {
+      const deletedUser = await this.UserRepository.deleteUser(id);
+      if (!deletedUser) {
+        throw new Error("Utilisateur non trouvé");
+      }
+      return { message: "Utilisateur supprimé" };
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
 }
 
 export default UserService;
